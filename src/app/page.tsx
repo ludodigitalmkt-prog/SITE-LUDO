@@ -1,17 +1,17 @@
+const basePath = "/SITE-LUDO";
 const whatsapp = "https://wa.me/5541995644570";
 
 const banners = [
-  "/images/banner-home.jpg",
-  "/images/1.png",
-  "/images/2.png",
-  "/images/3.png",
-  "/images/4.png",
-  "/images/5.png",
-  "/images/6.png",
-  "/images/7.png",
-  "/images/8.png",
+  `${basePath}/images/banner-home.jpg`,
+  `${basePath}/images/1.png`,
+  `${basePath}/images/2.png`,
+  `${basePath}/images/3.png`,
+  `${basePath}/images/4.png`,
+  `${basePath}/images/5.png`,
+  `${basePath}/images/6.png`,
+  `${basePath}/images/7.png`,
+  `${basePath}/images/8.png`,
 ];
-
 const services = [
   {
     title: "Branding",
@@ -88,7 +88,7 @@ export default function Home() {
         <nav className="relative z-50 mx-auto mt-7 flex w-[92%] max-w-7xl items-center justify-between rounded-full border border-white/10 bg-black/35 px-5 py-4 shadow-2xl backdrop-blur-2xl">
           <a href="#inicio" className="flex items-center">
             <img
-              src="/images/logo-ludo.png"
+              src={`${basePath}/images/logo-ludo.png`}
               alt="Logo Ludo Digital"
               className="h-12 w-auto object-contain"
             />
@@ -307,7 +307,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.05] p-10 text-center shadow-2xl backdrop-blur-2xl md:p-16">
           <div className="relative z-10">
             <img
-              src="/images/logo-ludo.png"
+              src={`${basePath}/images/logo-ludo.png`}
               alt="Logo Ludo Digital"
               className="mx-auto mb-8 h-16 w-auto object-contain"
             />
@@ -339,7 +339,7 @@ export default function Home() {
       <footer className="border-t border-white/10 bg-[#02030a] px-6 py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <img
-            src="/images/logo-ludo.png"
+            src={`${basePath}/images/logo-ludo.png`}
             alt="Logo Ludo Digital"
             className="h-10 w-auto object-contain"
           />
