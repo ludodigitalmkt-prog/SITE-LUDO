@@ -1,4 +1,4 @@
-const basePath = "/SITE-LUDO";
+const basePath = "";
 const whatsapp = "https://wa.me/5541995644570";
 
 const banners = [
