@@ -12,6 +12,7 @@ const banners = [
   `${basePath}/images/7.png`,
   `${basePath}/images/8.png`,
 ];
+
 const services = [
   {
     title: "Branding",
@@ -63,9 +64,63 @@ const portfolio = [
   "Campanha Digital",
 ];
 
+const parceiros = [
+  `${basePath}/images/parceiros/parceiro-1.png`,
+  `${basePath}/images/parceiros/parceiro-2.png`,
+  `${basePath}/images/parceiros/parceiro-3.png`,
+  `${basePath}/images/parceiros/parceiro-4.png`,
+  `${basePath}/images/parceiros/parceiro-5.png`,
+  `${basePath}/images/parceiros/parceiro-6.png`,
+];
+
+const planos = [
+  {
+    nome: "Plano Essencial",
+    descricao:
+      "Ideal para empresas que querem começar com uma presença digital mais profissional.",
+    itens: [
+      "Artes para redes sociais",
+      "Organização visual da marca",
+      "Direção básica de conteúdo",
+      "Comunicação mais profissional",
+    ],
+    mensagem:
+      "Olá, LUDO! Tenho interesse no Plano Essencial e gostaria de saber mais detalhes.",
+  },
+  {
+    nome: "Plano Profissional",
+    descricao:
+      "Para marcas que querem consistência, estratégia e visual mais forte no digital.",
+    itens: [
+      "Social media estratégico",
+      "Identidade visual aplicada",
+      "Planejamento de comunicação",
+      "Criativos para campanhas",
+    ],
+    mensagem:
+      "Olá, LUDO! Tenho interesse no Plano Profissional e gostaria de saber mais detalhes.",
+  },
+  {
+    nome: "Plano Premium",
+    descricao:
+      "Para empresas que querem uma estrutura digital completa, com site, branding e campanhas.",
+    itens: [
+      "Site ou landing page",
+      "Branding e direção criativa",
+      "Criativos de anúncio",
+      "Estratégia digital completa",
+    ],
+    mensagem:
+      "Olá, LUDO! Tenho interesse no Plano Premium e gostaria de saber mais detalhes.",
+  },
+];
+
+const criarLinkWhatsapp = (mensagem: string) =>
+  `${whatsapp}?text=${encodeURIComponent(mensagem)}`;
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#02030a] text-white overflow-hidden">
+    <main className="min-h-screen overflow-hidden bg-[#02030a] text-white">
       <section id="inicio" className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           {banners.map((banner, index) => (
@@ -98,8 +153,11 @@ export default function Home() {
             <a href="#servicos" className="transition hover:text-blue-300">
               Serviços
             </a>
-            <a href="#metodo" className="transition hover:text-blue-300">
-              Método
+            <a href="#planos" className="transition hover:text-blue-300">
+              Planos
+            </a>
+            <a href="#parceiros" className="transition hover:text-blue-300">
+              Parceiros
             </a>
             <a href="#portfolio" className="transition hover:text-blue-300">
               Portfólio
@@ -110,7 +168,9 @@ export default function Home() {
           </div>
 
           <a
-            href={whatsapp}
+            href={criarLinkWhatsapp(
+              "Olá, LUDO! Vim pelo site e gostaria de solicitar um orçamento."
+            )}
             target="_blank"
             className="rounded-full bg-white px-5 py-2.5 text-sm font-black text-black transition hover:scale-105 hover:bg-blue-300"
           >
@@ -139,7 +199,9 @@ export default function Home() {
 
             <div className="mt-9 flex flex-wrap gap-4">
               <a
-                href={whatsapp}
+                href={criarLinkWhatsapp(
+                  "Olá, LUDO! Quero começar um projeto com vocês."
+                )}
                 target="_blank"
                 className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 font-black shadow-[0_0_40px_rgba(37,99,235,0.45)] transition hover:scale-105"
               >
@@ -231,7 +293,70 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="metodo" className="bg-[#050713] px-6 py-28">
+      <section id="planos" className="relative bg-[#050713] px-6 py-28">
+        <div className="absolute left-[-160px] top-20 h-96 w-96 rounded-full bg-purple-600/20 blur-[150px]" />
+
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 max-w-4xl">
+            <p className="mb-4 text-sm font-black tracking-[0.35em] text-blue-400">
+              PLANOS E SERVIÇOS
+            </p>
+
+            <h2 className="text-4xl font-black leading-tight md:text-6xl">
+              Escolha o caminho ideal para fortalecer sua marca.
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+              Cada plano foi pensado para uma fase diferente da sua empresa,
+              desde a presença inicial até uma estrutura digital completa.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {planos.map((plano, index) => (
+              <div
+                key={plano.nome}
+                className={`rounded-[2.2rem] border border-white/10 p-8 transition duration-300 hover:-translate-y-2 ${
+                  index === 1
+                    ? "bg-gradient-to-br from-blue-600/25 to-purple-700/25 shadow-[0_0_60px_rgba(37,99,235,0.2)]"
+                    : "bg-white/[0.045]"
+                }`}
+              >
+                <span className="text-sm font-black tracking-[0.25em] text-blue-300">
+                  PLANO {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <h3 className="mt-6 text-3xl font-black">{plano.nome}</h3>
+
+                <p className="mt-4 leading-relaxed text-zinc-400">
+                  {plano.descricao}
+                </p>
+
+                <div className="my-8 h-px bg-white/10" />
+
+                <ul className="space-y-4">
+                  {plano.itens.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm text-zinc-300">
+                      <span className="text-blue-400">✦</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={criarLinkWhatsapp(plano.mensagem)}
+                  target="_blank"
+                  className="mt-9 inline-block w-full rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-4 text-center font-black transition hover:scale-105"
+                >
+                  Quero este plano
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="metodo" className="bg-[#02030a] px-6 py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[0.85fr_1.15fr]">
           <div>
             <p className="mb-4 text-sm font-black tracking-[0.35em] text-blue-400">
@@ -260,6 +385,45 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="parceiros" className="relative bg-[#050713] px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <p className="mb-4 text-sm font-black tracking-[0.35em] text-blue-400">
+              EMPRESAS PARCEIRAS
+            </p>
+
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">
+              Marcas que já caminham com a LUDO.
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-zinc-400">
+              Empresas que confiaram na LUDO para fortalecer sua presença
+              digital, identidade visual e comunicação.
+            </p>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] py-8">
+            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-[#050713] to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-[#050713] to-transparent" />
+
+            <div className="partner-track flex w-max items-center gap-10">
+              {[...parceiros, ...parceiros].map((logo, index) => (
+                <div
+                  key={`${logo}-${index}`}
+                  className="flex h-24 w-44 items-center justify-center rounded-2xl border border-white/10 bg-black/30 p-5"
+                >
+                  <img
+                    src={logo}
+                    alt={`Empresa parceira ${index + 1}`}
+                    className="max-h-14 max-w-full object-contain opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="portfolio" className="bg-[#02030a] px-6 py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -274,7 +438,9 @@ export default function Home() {
             </div>
 
             <a
-              href={whatsapp}
+              href={criarLinkWhatsapp(
+                "Olá, LUDO! Quero um projeto com visual profissional para minha marca."
+              )}
               target="_blank"
               className="w-fit rounded-full border border-white/15 px-7 py-4 font-black transition hover:bg-white hover:text-black"
             >
@@ -282,22 +448,22 @@ export default function Home() {
             </a>
           </div>
 
-<div className="grid gap-6 md:grid-cols-3">
-  {portfolio.map((item, index) => (
-    <div key={item} className="portfolio-card clean-card">
-      <div className="portfolio-glow" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {portfolio.map((item, index) => (
+              <div key={item} className="portfolio-card clean-card">
+                <div className="portfolio-glow" />
 
-      <article>
-        <span>PROJETO {index + 1}</span>
-        <h3>{item}</h3>
-        <p>
-          Solução visual criada para destacar marcas no digital com estética
-          premium, clareza e estratégia.
-        </p>
-      </article>
-    </div>
-  ))}
-</div>
+                <article>
+                  <span>PROJETO {index + 1}</span>
+                  <h3>{item}</h3>
+                  <p>
+                    Solução visual criada para destacar marcas no digital com
+                    estética premium, clareza e estratégia.
+                  </p>
+                </article>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -326,7 +492,9 @@ export default function Home() {
             </p>
 
             <a
-              href={whatsapp}
+              href={criarLinkWhatsapp(
+                "Olá, LUDO! Vim pelo site e gostaria de falar sobre uma presença digital para minha marca."
+              )}
               target="_blank"
               className="mt-10 inline-block rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-10 py-4 font-black shadow-[0_0_40px_rgba(37,99,235,0.45)] transition hover:scale-105"
             >
