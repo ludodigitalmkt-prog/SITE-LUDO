@@ -70,7 +70,6 @@ const parceiros = [
   `${basePath}/images/parceiros/parceiro-3.png`,
   `${basePath}/images/parceiros/parceiro-4.png`,
   `${basePath}/images/parceiros/parceiro-5.png`,
-  `${basePath}/images/parceiros/parceiro-6.png`,
 ];
 
 const planos = [
