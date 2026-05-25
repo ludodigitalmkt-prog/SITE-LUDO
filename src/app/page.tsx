@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const basePath = "";
 const whatsapp = "https://wa.me/5541995644570";
 
@@ -114,10 +118,87 @@ const planos = [
   },
 ];
 
+type ClimaAtual = {
+  temperatura: number;
+  vento: number;
+  codigo: number;
+  descricao: string;
+  horario: string;
+};
+
 const criarLinkWhatsapp = (mensagem: string) =>
   `${whatsapp}?text=${encodeURIComponent(mensagem)}`;
 
+const traduzirClima = (codigo: number) => {
+  if (codigo === 0) return "Céu limpo";
+  if ([1, 2, 3].includes(codigo)) return "Parcialmente nublado";
+  if ([45, 48].includes(codigo)) return "Neblina";
+  if ([51, 53, 55, 56, 57].includes(codigo)) return "Garoa";
+  if ([61, 63, 65, 66, 67].includes(codigo)) return "Chuva";
+  if ([71, 73, 75, 77].includes(codigo)) return "Neve";
+  if ([80, 81, 82].includes(codigo)) return "Pancadas de chuva";
+  if ([95, 96, 99].includes(codigo)) return "Tempestade";
+  return "Clima em atualização";
+};
+
 export default function Home() {
+  const [clima, setClima] = useState<ClimaAtual | null>(null);
+  const [carregandoClima, setCarregandoClima] = useState(false);
+  const [mensagemClima, setMensagemClima] = useState(
+    "Ative a experiência para ver o clima da sua região."
+  );
+
+  const buscarClima = () => {
+    if (!navigator.geolocation) {
+      setMensagemClima("Seu navegador não permite acessar localização.");
+      return;
+    }
+
+    setCarregandoClima(true);
+    setMensagemClima("Conectando localização em tempo real...");
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+
+          const resposta = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code&timezone=auto`
+          );
+
+          if (!resposta.ok) {
+            throw new Error("Erro ao buscar clima.");
+          }
+
+          const dados = await resposta.json();
+          const atual = dados.current;
+
+          setClima({
+            temperatura: Math.round(atual.temperature_2m),
+            vento: Math.round(atual.wind_speed_10m),
+            codigo: atual.weather_code,
+            descricao: traduzirClima(atual.weather_code),
+            horario: atual.time,
+          });
+
+          setMensagemClima("Experiência climática sincronizada.");
+        } catch {
+          setMensagemClima(
+            "Não foi possível carregar o clima agora. Tente novamente."
+          );
+        } finally {
+          setCarregandoClima(false);
+        }
+      },
+      () => {
+        setCarregandoClima(false);
+        setMensagemClima(
+          "Permissão de localização negada. Ative para ver a experiência."
+        );
+      }
+    );
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#02030a] text-white">
       <section id="inicio" className="relative min-h-screen overflow-hidden">
@@ -151,6 +232,9 @@ export default function Home() {
           <div className="hidden items-center gap-8 text-sm font-semibold text-zinc-300 md:flex">
             <a href="#servicos" className="transition hover:text-blue-300">
               Serviços
+            </a>
+            <a href="#clima" className="transition hover:text-blue-300">
+              Clima
             </a>
             <a href="#planos" className="transition hover:text-blue-300">
               Planos
@@ -227,6 +311,84 @@ export default function Home() {
               <div className="mini-card">
                 <strong>+Valor</strong>
                 <span>percepção de marca</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="clima" className="relative bg-[#02030a] px-6 py-24">
+        <div className="absolute left-[-160px] top-10 h-96 w-96 rounded-full bg-blue-600/20 blur-[150px]" />
+        <div className="absolute right-[-160px] bottom-10 h-96 w-96 rounded-full bg-purple-600/20 blur-[150px]" />
+
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.045] p-8 shadow-2xl backdrop-blur-2xl md:grid-cols-[1fr_0.8fr] md:p-12">
+          <div className="absolute inset-0 opacity-30 led-background" />
+
+          <div className="relative z-10">
+            <p className="mb-4 text-sm font-black tracking-[0.35em] text-blue-400">
+              EXPERIÊNCIA EM TEMPO REAL
+            </p>
+
+            <h2 className="text-4xl font-black leading-tight md:text-5xl">
+              O digital muda a cada segundo. Sua marca também precisa se mover.
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-400">
+              Uma experiência futurista que usa a localização do visitante para
+              mostrar o clima atual da região em tempo real.
+            </p>
+
+            <button
+              type="button"
+              onClick={buscarClima}
+              disabled={carregandoClima}
+              className="mt-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 font-black shadow-[0_0_40px_rgba(37,99,235,0.35)] transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {carregandoClima ? "Sincronizando..." : "Ver clima da minha região"}
+            </button>
+
+            <p className="mt-4 text-sm text-zinc-500">{mensagemClima}</p>
+          </div>
+
+          <div className="relative z-10 overflow-hidden rounded-[2.5rem] border border-white/10 bg-black/45 p-8 shadow-[0_0_80px_rgba(59,130,246,0.12)]">
+            <div className="absolute right-6 top-6 h-28 w-28 rounded-full bg-blue-400/20 blur-2xl" />
+            <div className="absolute bottom-[-40px] left-[-40px] h-36 w-36 rounded-full bg-purple-500/20 blur-3xl" />
+
+            <div className="relative z-10">
+              <p className="text-sm font-black tracking-[0.3em] text-blue-300">
+                CLIMA AGORA
+              </p>
+
+              <div className="mt-8 flex items-end gap-3">
+                <span className="text-7xl font-black">
+                  {clima ? `${clima.temperatura}°` : "--°"}
+                </span>
+
+                <span className="mb-3 text-zinc-400">
+                  {clima ? clima.descricao : "aguardando localização"}
+                </span>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <span className="text-xs text-zinc-500">Vento</span>
+                  <p className="mt-1 font-black">
+                    {clima ? `${clima.vento} km/h` : "-- km/h"}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+                  <span className="text-xs text-zinc-500">Status</span>
+                  <p className="mt-1 font-black">
+                    {clima ? "Online" : "Stand-by"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-4 text-sm leading-relaxed text-blue-100">
+                {clima
+                  ? "Dados conectados com sua localização. Uma experiência digital viva, dinâmica e personalizada."
+                  : "Clique no botão e permita a localização para ativar a experiência."}
               </div>
             </div>
           </div>
@@ -413,7 +575,7 @@ export default function Home() {
                 >
                   <img
                     src={logo}
-                    alt={`Empresa parceira ${index + 1}`}
+                    alt={`Empresa parceira ${(index % parceiros.length) + 1}`}
                     className="max-h-14 max-w-full object-contain opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
                   />
                 </div>
