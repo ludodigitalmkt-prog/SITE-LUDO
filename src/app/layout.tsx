@@ -1,25 +1,22 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Ludo Digital MKT",
+export const metadata = {
+  title: "Ludo Digital MKT | Sites, Branding e Marketing Digital",
   description:
-    "Sites, branding, social media e estratégias digitais para marcas que querem crescer.",
+    "A Ludo Digital MKT cria sites, landing pages, identidades visuais, social media, campanhas e estratégias digitais para empresas que querem crescer no digital.",
+  keywords: [
+    "Ludo Digital MKT",
+    "marketing digital",
+    "criação de sites",
+    "landing page",
+    "branding",
+    "social media",
+    "tráfego pago",
+    "identidade visual",
+    "agência de marketing digital",
+    "Curitiba",
+  ],
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
     apple: "/icon.png",
   },
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="pt-BR">
-      <body>{children}</body>
-    </html>
-  );
-}
