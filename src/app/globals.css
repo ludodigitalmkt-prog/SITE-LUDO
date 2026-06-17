@@ -14,13 +14,22 @@ body {
   color: #fff;
 }
 
+/* ============================= */
+/* FUNDO LED / GRID */
+/* ============================= */
+
 .led-background {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 78px 78px;
   mask-image: radial-gradient(circle at center, black, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 78%);
 }
+
+/* ============================= */
+/* LUZES DO HERO */
+/* ============================= */
 
 .light-beam {
   position: absolute;
@@ -50,6 +59,10 @@ body {
   transform: rotate(14deg);
 }
 
+/* ============================= */
+/* ANIMAÇÃO GERAL */
+/* ============================= */
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -65,6 +78,10 @@ body {
 .animate-fade-up {
   animation: fade-up 0.9s ease both;
 }
+
+/* ============================= */
+/* BANNERS DO HERO */
+/* ============================= */
 
 .hero-slide {
   position: absolute;
@@ -140,6 +157,10 @@ body {
   }
 }
 
+/* ============================= */
+/* MINI CARDS DO HERO */
+/* ============================= */
+
 .mini-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.07);
@@ -160,6 +181,10 @@ body {
   color: #a1a1aa;
   font-size: 13px;
 }
+
+/* ============================= */
+/* CARDS GERAIS */
+/* ============================= */
 
 .info-card,
 .service-card,
@@ -210,6 +235,10 @@ body {
   line-height: 1.7;
 }
 
+/* ============================= */
+/* SERVIÇOS */
+/* ============================= */
+
 .service-number {
   width: 56px;
   height: 56px;
@@ -229,6 +258,10 @@ body {
   font-weight: 900;
 }
 
+/* ============================= */
+/* PORTFÓLIO COM IMAGENS */
+/* ============================= */
+
 .portfolio-card {
   position: relative;
   height: 360px;
@@ -245,19 +278,39 @@ body {
 .portfolio-card:hover {
   transform: translateY(-8px);
   border-color: rgba(96, 165, 250, 0.55);
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.28), transparent 38%),
-    radial-gradient(circle at bottom right, rgba(147, 51, 234, 0.3), transparent 40%),
-    rgba(255, 255, 255, 0.075);
 }
 
-.portfolio-glow {
+.portfolio-image {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  opacity: 0.82;
+}
+
+.portfolio-card:hover .portfolio-image {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.16), transparent 45%),
-    linear-gradient(315deg, rgba(147, 51, 234, 0.18), transparent 45%);
-  opacity: 0.9;
+    linear-gradient(
+      180deg,
+      rgba(2, 3, 10, 0.1) 0%,
+      rgba(2, 3, 10, 0.78) 70%,
+      rgba(2, 3, 10, 0.96) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.25),
+      rgba(147, 51, 234, 0.25)
+    );
 }
 
 .portfolio-card article {
@@ -288,6 +341,11 @@ body {
   color: #d4d4d8;
   line-height: 1.6;
 }
+
+/* ============================= */
+/* CARROSSEL DE PARCEIROS */
+/* ============================= */
+
 .partner-track {
   animation: partnerScroll 28s linear infinite;
 }

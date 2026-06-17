@@ -60,12 +60,30 @@ const process = [
 ];
 
 const portfolio = [
-  "Identidade Visual",
-  "Social Media",
-  "Landing Page",
-  "Criativo de Anúncio",
-  "Perfil Profissional",
-  "Campanha Digital",
+  {
+    title: "Identidade Visual",
+    image: `${basePath}/projetos/projeto-1.png`,
+  },
+  {
+    title: "Social Media",
+    image: `${basePath}/projetos/projeto-2.png`,
+  },
+  {
+    title: "Landing Page",
+    image: `${basePath}/projetos/projeto-3.png`,
+  },
+  {
+    title: "Criativo de Anúncio",
+    image: `${basePath}/projetos/projeto-4.png`,
+  },
+  {
+    title: "Perfil Profissional",
+    image: `${basePath}/projetos/projeto-5.png`,
+  },
+  {
+    title: "Campanha Digital",
+    image: `${basePath}/projetos/projeto-6.png`,
+  },
 ];
 
 const parceiros = [
@@ -611,19 +629,25 @@ export default function Home() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {portfolio.map((item, index) => (
-              <div key={item} className="portfolio-card clean-card">
-                <div className="portfolio-glow" />
+  <div key={item.title} className="portfolio-card clean-card">
+    <img
+      src={item.image}
+      alt={`Projeto LUDO - ${item.title}`}
+      className="portfolio-image"
+    />
 
-                <article>
-                  <span>PROJETO {index + 1}</span>
-                  <h3>{item}</h3>
-                  <p>
-                    Solução visual criada para destacar marcas no digital com
-                    estética premium, clareza e estratégia.
-                  </p>
-                </article>
-              </div>
-            ))}
+    <div className="portfolio-overlay" />
+
+    <article>
+      <span>PROJETO {index + 1}</span>
+      <h3>{item.title}</h3>
+      <p>
+        Solução visual criada para destacar marcas no digital com
+        estética premium, clareza e estratégia.
+      </p>
+    </article>
+  </div>
+))}
           </div>
         </div>
       </section>
