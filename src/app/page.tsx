@@ -160,6 +160,7 @@ const traduzirClima = (codigo: number) => {
 };
 
 export default function Home() {
+  const [menuMobileAberto, setMenuMobileAberto] = useState(false);
   const [clima, setClima] = useState<ClimaAtual | null>(null);
   const [carregandoClima, setCarregandoClima] = useState(false);
   const [mensagemClima, setMensagemClima] = useState(
@@ -271,16 +272,135 @@ export default function Home() {
             </a>
           </div>
 
-          <a
-            href={criarLinkWhatsapp(
-              "Olá, LUDO! Vim pelo site e gostaria de solicitar um orçamento."
-            )}
-            target="_blank"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-black text-black transition hover:scale-105 hover:bg-blue-300"
-          >
-            Orçamento
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href={criarLinkWhatsapp(
+                "Olá, LUDO! Vim pelo site e gostaria de solicitar um orçamento."
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-black text-black transition hover:scale-105 hover:bg-blue-300 sm:inline-flex"
+            >
+              Orçamento
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setMenuMobileAberto((aberto) => !aberto)}
+              className="relative z-[70] flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 backdrop-blur-xl md:hidden"
+              aria-label={menuMobileAberto ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={menuMobileAberto}
+            >
+              <span className="sr-only">
+                {menuMobileAberto ? "Fechar menu" : "Abrir menu"}
+              </span>
+
+              <span className="relative block h-5 w-6">
+                <span
+                  className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${
+                    menuMobileAberto
+                      ? "top-2 rotate-45"
+                      : ""
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-2 h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${
+                    menuMobileAberto
+                      ? "opacity-0"
+                      : "opacity-100"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-4 h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${
+                    menuMobileAberto
+                      ? "top-2 -rotate-45"
+                      : ""
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
         </nav>
+
+        <div
+          className={`fixed inset-0 z-[60] transition-all duration-500 md:hidden ${
+            menuMobileAberto
+              ? "visible opacity-100"
+              : "invisible opacity-0"
+          }`}
+        >
+          <button
+            type="button"
+            aria-label="Fechar menu"
+            onClick={() => setMenuMobileAberto(false)}
+            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+          />
+
+          <div
+            className={`absolute left-4 right-4 top-24 overflow-hidden rounded-[32px] border border-white/15 bg-[#080912]/95 p-5 shadow-2xl transition-all duration-500 ${
+              menuMobileAberto
+                ? "translate-y-0 scale-100"
+                : "-translate-y-5 scale-95"
+            }`}
+          >
+            <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-5">
+              <div>
+                <p className="text-xs font-black tracking-[0.25em] text-blue-300">
+                  MENU LUDO
+                </p>
+                <p className="mt-1 text-sm text-zinc-400">
+                  Escolha onde deseja ir
+                </p>
+              </div>
+
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold text-zinc-400">
+                DIGITAL MKT
+              </span>
+            </div>
+
+            <div className="grid gap-2">
+              {[
+                ["Serviços", "#servicos"],
+                ["Clima", "#clima"],
+                ["Planos", "#planos"],
+                ["Parceiros", "#parceiros"],
+                ["Portfólio", "#portfolio"],
+                ["Eventos", "/eventos/"],
+                ["Contato", "#contato"],
+              ].map(([titulo, link], index) => (
+                <a
+                  key={titulo}
+                  href={link}
+                  onClick={() => setMenuMobileAberto(false)}
+                  className="group flex items-center justify-between rounded-2xl border border-transparent px-4 py-4 text-lg font-bold text-white transition hover:border-white/10 hover:bg-white/5"
+                >
+                  <span className="flex items-center gap-4">
+                    <small className="text-[10px] font-black text-blue-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </small>
+                    {titulo}
+                  </span>
+
+                  <span className="text-zinc-500 transition group-hover:translate-x-1 group-hover:text-white">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+
+            <a
+              href={criarLinkWhatsapp(
+                "Olá, LUDO! Vim pelo site e gostaria de solicitar um orçamento."
+              )}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMenuMobileAberto(false)}
+              className="mt-5 flex w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-4 font-black text-white shadow-[0_0_35px_rgba(37,99,235,0.35)]"
+            >
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-100px)] max-w-7xl items-center px-6 py-16">
           <div className="max-w-4xl animate-fade-up">
