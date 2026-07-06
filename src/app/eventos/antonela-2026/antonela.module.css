@@ -944,3 +944,186 @@
     animation: none !important;
   }
 }
+
+
+/* AJUSTE RESPONSIVO DO BANNER ANTONELA */
+
+.heroBannerBackdrop {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 100svh;
+    background: #30232c;
+  }
+
+  .heroBannerBackdrop {
+    position: absolute;
+    inset: -35px;
+    z-index: -5;
+
+    display: block;
+    width: calc(100% + 70px);
+    height: calc(100% + 70px);
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: .68;
+    filter: blur(24px) brightness(.68) saturate(.9);
+    transform: scale(1.08);
+  }
+
+  .heroBanner {
+    position: absolute;
+    top: 82px;
+    right: 0;
+    bottom: auto;
+    left: 0;
+
+    width: 100%;
+    height: min(58svh, 620px);
+
+    object-fit: contain;
+    object-position: center top;
+
+    background: transparent;
+    animation: bannerFadeMobile 1.2s ease both;
+  }
+
+  @keyframes bannerFadeMobile {
+    from {
+      opacity: 0;
+      transform: scale(1.035);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .heroShade {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(31, 20, 30, .08) 0%,
+        rgba(31, 20, 30, .04) 35%,
+        rgba(31, 20, 30, .7) 63%,
+        rgba(31, 20, 30, .98) 100%
+      );
+  }
+
+  .nav {
+    width: calc(100% - 28px);
+    padding: 18px 0;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand strong {
+    font-size: 14px;
+  }
+
+  .back {
+    padding: 10px 15px;
+    font-size: 14px;
+    background: rgba(43, 31, 42, .55);
+  }
+
+  .heroContent {
+    min-height: 100svh;
+    width: calc(100% - 32px);
+
+    padding:
+      clamp(470px, 64svh, 650px)
+      0
+      105px;
+
+    justify-content: flex-start;
+  }
+
+  .heroContent p {
+    margin: 0;
+
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: .2em;
+  }
+
+  .heroContent h1 {
+    max-width: 100%;
+    margin: 12px 0 10px;
+
+    font-size: clamp(4rem, 20vw, 6.3rem);
+    line-height: .88;
+    letter-spacing: -.065em;
+
+    overflow-wrap: anywhere;
+  }
+
+  .heroContent > span {
+    max-width: 310px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .heroButton {
+    margin-top: 22px;
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+
+  .bannerDots {
+    right: 18px;
+    bottom: 28px;
+    left: 18px;
+
+    max-width: calc(100% - 36px);
+    padding: 5px 2px;
+
+    justify-content: flex-start;
+    gap: 6px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .bannerDots::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bannerDots button {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+  }
+
+  .bannerDots .activeDot {
+    width: 25px;
+    flex-basis: 25px;
+  }
+}
+
+@media (max-width: 390px) {
+  .heroBanner {
+    top: 76px;
+    height: 54svh;
+  }
+
+  .heroContent {
+    padding-top: 59svh;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(3.7rem, 19vw, 5.2rem);
+  }
+
+  .back {
+    padding: 9px 13px;
+  }
+}

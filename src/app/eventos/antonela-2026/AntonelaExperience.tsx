@@ -225,12 +225,22 @@ export default function AntonelaExperience() {
     <main className={styles.page}>
       <section className={styles.hero}>
         {banner && (
-          <img
-            key={banner}
-            src={banner}
-            alt=""
-            className={styles.heroBanner}
-          />
+          <>
+            <img
+              key={`fundo-${banner}`}
+              src={banner}
+              alt=""
+              aria-hidden="true"
+              className={styles.heroBannerBackdrop}
+            />
+
+            <img
+              key={banner}
+              src={banner}
+              alt={`Banner do evento da ${antonelaConfig.nome}`}
+              className={styles.heroBanner}
+            />
+          </>
         )}
 
         <div className={styles.heroShade} />
