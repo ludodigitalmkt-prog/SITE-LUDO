@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+<defs>
+ <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b38d52"/><stop offset="1" stop-color="#f2dfb1"/></linearGradient>
+ <radialGradient id="r"><stop stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <filter id="b"><feGaussianBlur stdDeviation="36"/></filter>
+</defs>
+<rect width="1200" height="1500" fill="#07070b"/>
+<circle cx="330" cy="320" r="380" fill="#b38d52" opacity=".42" filter="url(#b)"/>
+<circle cx="890" cy="985" r="430" fill="#f2dfb1" opacity=".38" filter="url(#b)"/>
+<path d="M0 980 C300 820, 620 1200,1200 840 L1200 1500 L0 1500Z" fill="url(#g)" opacity=".42"/>
+<rect x="70" y="70" width="1060" height="1360" rx="54" fill="none" stroke="#fff" stroke-opacity=".16"/>
+<circle cx="880" cy="330" r="220" fill="url(#r)" opacity=".28"/>
+<text x="90" y="1190" fill="#fff" font-family="Arial, sans-serif" font-size="104" font-weight="800">CASAMENTO</text>
+<text x="94" y="1260" fill="#fff" fill-opacity=".72" font-family="Arial, sans-serif" font-size="34">Histórias com elegância</text>
+<text x="94" y="1380" fill="#fff" fill-opacity=".4" font-family="Arial, sans-serif" font-size="24" letter-spacing="8">LUDO EVENTOS</text>
+</svg>

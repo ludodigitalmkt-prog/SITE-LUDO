@@ -1,0 +1,41 @@
+export const antonelaBanners: string[] = [
+  "/eventos/antonela-2026/banners/banner-01.png",
+  "/eventos/antonela-2026/banners/banner-02.png",
+  "/eventos/antonela-2026/banners/banner-03.png",
+  "/eventos/antonela-2026/banners/banner-04.png",
+  "/eventos/antonela-2026/banners/banner-05.png",
+  "/eventos/antonela-2026/banners/banner-06.png",
+  "/eventos/antonela-2026/banners/banner-07.png",
+  "/eventos/antonela-2026/banners/banner-08.png",
+  "/eventos/antonela-2026/banners/banner-09.png",
+  "/eventos/antonela-2026/banners/banner-10.png",
+  "/eventos/antonela-2026/banners/banner-11.png",
+  "/eventos/antonela-2026/banners/banner-12.png",
+  "/eventos/antonela-2026/banners/banner-13.png",
+  "/eventos/antonela-2026/banners/banner-14.png",
+  "/eventos/antonela-2026/banners/banner-15.png",
+  "/eventos/antonela-2026/banners/banner-16.png",
+  "/eventos/antonela-2026/banners/banner-17.png",
+  "/eventos/antonela-2026/banners/banner-18.png",
+  "/eventos/antonela-2026/banners/banner-19.png",
+  "/eventos/antonela-2026/banners/banner-20.png",
+  "/eventos/antonela-2026/banners/banner-21.png",
+  "/eventos/antonela-2026/banners/banner-22.png",
+  "/eventos/antonela-2026/banners/banner-23.png",
+  "/eventos/antonela-2026/banners/banner-24.png",
+];
+
+export const antonelaAlbumCover = "/eventos/antonela-2026/album/capa-album.png";
+
+export const antonelaAlbumPhotos: string[] = [
+  "/eventos/antonela-2026/album/album-02.png",
+  "/eventos/antonela-2026/album/album-03.png",
+  "/eventos/antonela-2026/album/album-04.png",
+  "/eventos/antonela-2026/album/album-05.png",
+  "/eventos/antonela-2026/album/album-06.png",
+  "/eventos/antonela-2026/album/album-07.png",
+  "/eventos/antonela-2026/album/album-08.png",
+  "/eventos/antonela-2026/album/album-09.png",
+  "/eventos/antonela-2026/album/album-10.png",
+  "/eventos/antonela-2026/album/album-11.png",
+];

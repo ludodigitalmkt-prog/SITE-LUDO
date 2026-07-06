@@ -263,9 +263,6 @@ export default function Home() {
             <a href="#portfolio" className="transition hover:text-blue-300">
               Portfólio
             </a>
-            <a href="/eventos/" className="transition hover:text-blue-300">
-              Eventos
-            </a>
             <a href="#contato" className="transition hover:text-blue-300">
               Contato
             </a>

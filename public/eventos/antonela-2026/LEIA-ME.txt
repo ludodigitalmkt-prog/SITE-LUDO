@@ -1,0 +1,57 @@
+ANTONELA 2026 — ONDE COLOCAR AS IMAGENS
+========================================
+
+TODOS OS ARQUIVOS PODEM SER PNG.
+
+1. BANNERS HORIZONTAIS
+
+Coloque em:
+
+public/eventos/antonela-2026/entrada-banners/
+
+Mantenha exatamente estes nomes:
+
+CAPA.png
+CASAL1.png
+DECORAÇÃO.png
+AMIGOS1.png
+AMIGOS2.png
+AMIGOS3.png
+...
+AMIGOS21.png
+
+2. ÁLBUM RETRATO
+
+Coloque em:
+
+public/eventos/antonela-2026/entrada-album/
+
+Mantenha estes nomes:
+
+CAPA ALBUM.png
+PARTE2.png
+PARTE3.png
+PARTE4.png
+PARTE5.png
+PARTE6.png
+PARTE7.png
+PARTE8.png
+PARTE9.png
+PARTE10.png
+PARTE11.png
+
+3. DEPOIS DE COLOCAR AS IMAGENS
+
+Na raiz do projeto, rode:
+
+python3 organizar-antonela.py
+
+Depois:
+
+rm -rf .next
+npm run build
+npm run dev -- --hostname 0.0.0.0
+
+Página:
+
+/eventos/antonela-2026/

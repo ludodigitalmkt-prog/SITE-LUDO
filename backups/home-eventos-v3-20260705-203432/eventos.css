@@ -1,0 +1,650 @@
+.ludo-event-page {
+  --accent: #48e4ff;
+  --accent-two: #985cff;
+  --event-background: #07070c;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  background: var(--event-background);
+}
+
+.ludo-event-page * {
+  box-sizing: border-box;
+}
+
+.ludo-container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.ludo-event-nav {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.ludo-event-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ludo-event-logo > span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 15px;
+  color: #050509;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent-two), var(--accent));
+}
+
+.ludo-event-logo strong,
+.ludo-event-logo small {
+  display: block;
+}
+
+.ludo-event-logo strong {
+  letter-spacing: .18em;
+}
+
+.ludo-event-logo small {
+  margin-top: 2px;
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+  letter-spacing: .25em;
+}
+
+.ludo-nav-button,
+.ludo-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  font-weight: 800;
+  backdrop-filter: blur(16px);
+  transition: .25s;
+}
+
+.ludo-nav-button:hover,
+.ludo-button:hover {
+  transform: translateY(-3px);
+}
+
+.ludo-button.primary {
+  border: 0;
+  color: #050509;
+  background: linear-gradient(115deg, var(--accent-two), var(--accent));
+}
+
+.ludo-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .15;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, #000, transparent 75%);
+}
+
+.ludo-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-two);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+
+.ludo-eyebrow::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: currentColor;
+}
+
+.ludo-description {
+  max-width: 680px;
+  margin-top: 24px;
+  color: rgba(255,255,255,.62);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.ludo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.ludo-portal {
+  --event-background: #06050b;
+}
+
+.ludo-portal-hero {
+  position: relative;
+  min-height: 94vh;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(124,62,235,.28), transparent 34%),
+    radial-gradient(circle at 86% 24%, rgba(44,211,255,.18), transparent 32%),
+    linear-gradient(145deg, #06050b, #0b0716);
+}
+
+.ludo-portal-content {
+  max-width: 950px;
+  padding: 120px 0 100px;
+}
+
+.ludo-portal-content h1 {
+  margin: 28px 0 20px;
+  font-size: clamp(5rem, 14vw, 12rem);
+  line-height: .72;
+  letter-spacing: -.08em;
+  text-transform: uppercase;
+}
+
+.ludo-portal-content h1 span {
+  display: block;
+  color: transparent;
+  background: linear-gradient(90deg, #50e7ff, #557aff, #b65dff);
+  background-clip: text;
+}
+
+.ludo-section {
+  position: relative;
+  padding: 105px 0;
+}
+
+.ludo-section-title {
+  max-width: 900px;
+  margin-top: 20px;
+  font-size: clamp(3rem, 7vw, 6.7rem);
+  line-height: .9;
+  letter-spacing: -.06em;
+}
+
+.ludo-section-title span {
+  color: rgba(255,255,255,.35);
+}
+
+.ludo-portal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 54px;
+}
+
+.ludo-portal-card {
+  --card-color: #42e4ff;
+  --card-color-2: #985cff;
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 8% 12%, var(--card-color), transparent 38%),
+    radial-gradient(circle at 90% 28%, var(--card-color-2), transparent 36%),
+    linear-gradient(150deg, #16131f, #07070b);
+  transition: .45s;
+}
+
+.ludo-portal-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.96), transparent 72%);
+}
+
+.ludo-portal-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,.3);
+}
+
+.ludo-card-top {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  right: 26px;
+  left: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ludo-card-top small {
+  color: rgba(255,255,255,.58);
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+.ludo-card-top b {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 50%;
+}
+
+.ludo-card-content {
+  position: absolute;
+  z-index: 3;
+  right: 28px;
+  bottom: 28px;
+  left: 28px;
+}
+
+.ludo-card-content > small {
+  color: var(--card-color-2);
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.ludo-card-content h3 {
+  margin-top: 16px;
+  font-size: 45px;
+  line-height: .95;
+  letter-spacing: -.05em;
+}
+
+.ludo-card-content p {
+  margin-top: 16px;
+  color: rgba(255,255,255,.58);
+  line-height: 1.65;
+}
+
+.ludo-card-content strong {
+  display: block;
+  margin-top: 22px;
+}
+
+.ludo-experience-hero {
+  position: relative;
+  min-height: 94vh;
+  isolation: isolate;
+}
+
+.ludo-experience-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background:
+    radial-gradient(circle at 12% 18%, var(--accent), transparent 36%),
+    radial-gradient(circle at 88% 25%, var(--accent-two), transparent 34%),
+    linear-gradient(145deg, #15131f, var(--event-background));
+  opacity: .68;
+}
+
+.ludo-experience-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(to top, var(--event-background), transparent 52%);
+}
+
+.ludo-experience-content {
+  max-width: 920px;
+  padding: 110px 0 100px;
+}
+
+.ludo-experience-content h1 {
+  margin: 28px 0 22px;
+  font-size: clamp(4.5rem, 12vw, 10rem);
+  line-height: .78;
+  letter-spacing: -.075em;
+  text-transform: uppercase;
+}
+
+.ludo-experience-content h2 {
+  max-width: 760px;
+  font-size: clamp(1.8rem, 3.8vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+.ludo-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 50px;
+}
+
+.ludo-feature-card {
+  min-height: 340px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+}
+
+.ludo-feature-card small {
+  color: var(--accent-two);
+  font-weight: 900;
+  letter-spacing: .17em;
+}
+
+.ludo-feature-card h3 {
+  margin-top: 90px;
+  font-size: 30px;
+  letter-spacing: -.04em;
+}
+
+.ludo-feature-card p {
+  margin-top: 14px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.65;
+}
+
+.ludo-feature-card button {
+  margin-top: 22px;
+  border: 0;
+  color: var(--accent-two);
+  background: transparent;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.ludo-video-area {
+  position: relative;
+  min-height: 570px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 18% 18%, var(--accent), transparent 35%),
+    radial-gradient(circle at 82% 35%, var(--accent-two), transparent 34%),
+    linear-gradient(145deg, #171420, #050507);
+}
+
+.ludo-video-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.9), transparent 66%);
+}
+
+.ludo-video-area > div {
+  position: absolute;
+  z-index: 2;
+  right: 32px;
+  bottom: 32px;
+  left: 32px;
+}
+
+.ludo-video-area h2 {
+  max-width: 800px;
+  margin-top: 16px;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: .9;
+  letter-spacing: -.06em;
+}
+
+.ludo-video-area p:last-child {
+  max-width: 650px;
+  margin-top: 18px;
+  color: rgba(255,255,255,.58);
+}
+
+.ludo-access-panel {
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 42px;
+  background:
+    linear-gradient(135deg, rgba(110,68,240,.22), rgba(255,255,255,.04), rgba(46,211,255,.14));
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.ludo-form {
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  background: rgba(0,0,0,.28);
+  backdrop-filter: blur(18px);
+}
+
+.ludo-form label {
+  font-weight: 900;
+}
+
+.ludo-form > div {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ludo-form input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255,255,255,.06);
+  outline: none;
+}
+
+.ludo-message {
+  min-height: 23px;
+  margin-top: 14px;
+  color: rgba(255,255,255,.58);
+  font-size: 14px;
+}
+
+.ludo-effects {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-symbol,
+.bubble,
+.ring,
+.spark,
+.laser {
+  position: absolute;
+  display: block;
+}
+
+.floating-symbol {
+  font-style: normal;
+  font-size: 30px;
+  opacity: .45;
+  animation: ludoFloat 5s ease-in-out infinite;
+}
+
+.symbol-one { top: 24%; left: 8%; }
+.symbol-two { top: 17%; right: 9%; animation-delay: 1s; }
+.symbol-three { right: 22%; bottom: 18%; animation-delay: 2s; }
+
+.bubble {
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(255,255,255,.68);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.85), rgba(255,255,255,.1) 50%, transparent 72%);
+  animation: ludoBubble 10s ease-in-out infinite;
+}
+
+.bubble-one { top: 32%; left: 7%; }
+.bubble-two { top: 18%; right: 8%; width: 120px; height: 120px; animation-delay: 2s; }
+.bubble-three { right: 38%; bottom: 8%; width: 48px; height: 48px; animation-delay: 4s; }
+
+.ring {
+  width: 260px;
+  height: 260px;
+  border: 1px solid var(--accent-two);
+  border-radius: 50%;
+  opacity: .35;
+  animation: ludoSpin 17s linear infinite;
+}
+
+.ring-one { top: 14%; right: -80px; }
+.ring-two {
+  top: 22%;
+  right: -10px;
+  width: 340px;
+  height: 340px;
+  animation-direction: reverse;
+}
+
+.spark {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-two);
+  box-shadow: 0 0 20px var(--accent-two);
+  animation: ludoSpark 3s ease-in-out infinite;
+}
+
+.laser {
+  width: 2px;
+  height: 75vh;
+  opacity: .45;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  transform: rotate(58deg);
+  animation: ludoLaser 6s ease-in-out infinite;
+}
+
+.laser-one { top: -10%; left: 20%; }
+.laser-two { top: -18%; left: 62%; animation-delay: 2s; }
+.laser-three { top: 5%; right: 12%; animation-delay: 4s; }
+
+@keyframes ludoFloat {
+  0%, 100% { transform: translateY(0) rotate(-7deg); }
+  50% { transform: translateY(-20px) rotate(7deg); }
+}
+
+@keyframes ludoBubble {
+  0%, 100% { transform: translateY(40px) scale(.8); opacity: .18; }
+  50% { transform: translateY(-90px) scale(1.15); opacity: .62; }
+}
+
+@keyframes ludoSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ludoSpark {
+  0%, 100% { transform: scale(.7); opacity: .25; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+@keyframes ludoLaser {
+  0%, 100% { transform: translateX(-70px) rotate(58deg); }
+  50% { transform: translateX(170px) rotate(58deg); }
+}
+
+.ludo-experience[data-theme="infantil"] {
+  color: #18313a;
+}
+
+.ludo-experience[data-theme="infantil"] .ludo-experience-hero::before {
+  background:
+    radial-gradient(circle at 8% 16%, #ffd34f 0 13%, transparent 14%),
+    radial-gradient(circle at 92% 22%, #ff8cab 0 12%, transparent 13%),
+    radial-gradient(circle at 74% 72%, #4bd4db 0 18%, transparent 19%),
+    linear-gradient(135deg, #fff4c6, #bff3ed 50%, #ffd2df);
+  opacity: 1;
+}
+
+.ludo-experience[data-theme="bebe"] {
+  color: #513344;
+}
+
+.ludo-experience[data-theme="bebe"] .ludo-experience-hero::before {
+  background:
+    radial-gradient(circle at 16% 22%, rgba(255,148,190,.58), transparent 29%),
+    radial-gradient(circle at 82% 18%, rgba(143,220,255,.65), transparent 31%),
+    linear-gradient(145deg, #fffafd, #fff0f6 46%, #edf8ff);
+  opacity: 1;
+}
+
+.ludo-experience[data-theme="casamento"] {
+  color: #123052;
+}
+
+.ludo-experience[data-theme="casamento"] .ludo-experience-hero::before {
+  background:
+    radial-gradient(circle at 80% 22%, rgba(217,184,115,.35), transparent 32%),
+    linear-gradient(140deg, #fcf9f2 0 56%, #e1e9f2);
+  opacity: 1;
+}
+
+.ludo-experience[data-theme="infantil"] .ludo-description,
+.ludo-experience[data-theme="bebe"] .ludo-description,
+.ludo-experience[data-theme="casamento"] .ludo-description,
+.ludo-experience[data-theme="infantil"] .ludo-feature-card p,
+.ludo-experience[data-theme="bebe"] .ludo-feature-card p,
+.ludo-experience[data-theme="casamento"] .ludo-feature-card p {
+  color: rgba(25,38,48,.62);
+}
+
+.ludo-experience[data-theme="infantil"] .ludo-feature-card,
+.ludo-experience[data-theme="bebe"] .ludo-feature-card,
+.ludo-experience[data-theme="casamento"] .ludo-feature-card,
+.ludo-experience[data-theme="infantil"] .ludo-access-panel,
+.ludo-experience[data-theme="bebe"] .ludo-access-panel,
+.ludo-experience[data-theme="casamento"] .ludo-access-panel {
+  border-color: rgba(25,38,48,.12);
+  background-color: rgba(255,255,255,.65);
+}
+
+.ludo-experience[data-theme="infantil"] .ludo-nav-button,
+.ludo-experience[data-theme="bebe"] .ludo-nav-button,
+.ludo-experience[data-theme="casamento"] .ludo-nav-button,
+.ludo-experience[data-theme="infantil"] .ludo-button:not(.primary),
+.ludo-experience[data-theme="bebe"] .ludo-button:not(.primary),
+.ludo-experience[data-theme="casamento"] .ludo-button:not(.primary) {
+  color: inherit;
+  border-color: rgba(25,38,48,.15);
+  background: rgba(255,255,255,.65);
+}
+
+@media (max-width: 900px) {
+  .ludo-portal-grid,
+  .ludo-feature-grid,
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ludo-portal-card {
+    min-height: 490px;
+  }
+
+  .ludo-form > div {
+    flex-direction: column;
+  }
+
+  .ludo-event-nav {
+    gap: 15px;
+  }
+
+  .ludo-event-logo div {
+    display: none;
+  }
+}
